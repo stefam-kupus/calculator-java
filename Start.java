@@ -2,25 +2,25 @@ import java.util.Scanner;
 
 public class Start {
 
-	public static void main(String[] args) {
-		String Expression;
-		boolean active = true;
-		System.out.println("Enter expression here (type 'exit' to quit):");
-		Scanner scanIn;
-		
-		while (active) {
-			scanIn = new Scanner(System.in);
-			Expression = scanIn.nextLine();
+    public static void main(String[] args) {
+        String Expression;
+        boolean active = true;
+        System.out.println("Enter expression here (type 'exit' to quit):");
 
-			if (Expression.equals("exit")) {
-				scanIn.close();
-				active = false;
-			} else {
-				System.out.println(Calculator.Run(Expression));
-			}
+        try (Scanner scanIn = new Scanner(System.in)) {
+            while (active) {
+                Expression = scanIn.nextLine();
 
-		}
-
-	}
-
+                if (Expression.equals("exit")) {
+                    active = false;
+                } else {
+                    try {
+                        System.out.println(Calculator.Run(Expression));
+                    } catch (Exception e) {
+                        System.out.println("Invalid expression. Please try again.");
+                    }
+                }
+            }
+        }
+    }
 }
