@@ -1,1 +1,51 @@
+SISTEMSKO TESTIRANJE (Black Box metoda)
 
+Unos: 2+3
+Očekivano: 5
+Dobijeno: 5
+Zaključak: Radi ispravno
+
+Unos: 10+5*2
+Očekivano: 20 (prioritet množenja)
+Dobijeno: 20
+Zaključak: Prioritet operatora funkcioniše ispravno
+
+Unos: (3+4)*2
+Očekivano: 14
+Dobijeno: 14
+Zaključak: Zagrade se pravilno obrađuju
+
+Unos: 2++3
+Očekivano: Greška
+Dobijeno: Invalid expression. Please try again.
+Zaključak: Greška je prepoznata – korektno
+
+Unos: 10/0
+Očekivano: Greška (deljenje sa nulom)
+Dobijeno: Invalid expression. Please try again.
+Zaključak: Greška je prepoznata – korektno
+Unos: exit
+Očekivano: Program se zatvara
+Dobijeno: Program zatvoren
+Zaključak: OK
+
+Unos: Exit
+Očekivano: Program se zatvara
+Dobijeno: Program se ne zatvara
+Zaključak: Potrebno koristiti `equalsIgnoreCase` u poređenju
+
+Unos: prazan string
+Očekivano: Greška
+Dobijeno: Invalid expression. Please try again.
+Zaključak: Korektno detektovan prazan unos
+
+JEDINIČNI TEST
+
+Korišćena metoda: Calculator.Run()
+
+@Test
+public void testCalculateSimpleAddition() {
+    assertEquals(7, Calculator.Run("3+4"));
+}
+
+Zaključak: Metoda `Run` ispravno obrađuje jednostavne izraze.
